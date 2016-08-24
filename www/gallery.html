@@ -1,0 +1,80 @@
+<html>
+	<head></head>
+	<body>
+		<style>
+			/* switching box model for all elements */
+body{
+	background:url('http://bgfons.com/upload/light_texture2245.jpg');
+}
+
+p{
+	color:white;
+	font-size:36;
+	text-align:center;
+	font-family: helvetica, sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* layout */
+.wrapper {
+  max-width: 980px;
+  margin: 20px auto;
+}
+
+/* gallery */
+.pict {
+  min-width: 25%;
+  min-height: 200px;
+  background:  url('http://data.whicdn.com/images/12495321/large.jpg');
+  float: left;
+  /*display:inline-block;
+  vertical-align:top;
+  margin-right:-4px;*/
+  border: 1px solid #fff;
+}
+
+.line:nth-child(even) .pict:nth-child(odd) {
+  height: 300px;
+  margin-top: -100px;
+}
+.line:nth-child(even) .pict:nth-child(even) {
+  background: url('http://30.media.tumblr.com/tumblr_lc8ns160c31qc3j6no1_250.jpg');
+}
+.line:nth-child(odd) .pict:nth-child(odd) {
+  background: url('http://cdn.bluefaqs.netdna-cdn.com/wp-content/uploads/2010/06/Careful.jpg');
+}
+.line:nth-child(odd) .pict:nth-child(even) {
+  height: 300px;
+}
+
+		</style>
+
+
+		<div class="wrapper"><p>Tylerpiece</p></div>
+<div class="wrapper">
+  <div class="line">
+     <div class="pict p1"></div>
+     <div class="pict p2"></div>
+     <div class="pict p3"></div>
+     <div class="pict p4"></div>
+  </div>
+  <div class="line">
+     <div class="pict p5"></div>
+     <div class="pict p6"></div>
+     <div class="pict p7"></div>
+     <div class="pict p8"></div>
+  </div>
+  <div class="line">
+     <div class="pict p9"></div>
+     <div class="pict p10"></div>
+     <div class="pict p11"></div>
+     <div class="pict p12"></div>
+  </div>
+</div>
+	</body>
+</html>

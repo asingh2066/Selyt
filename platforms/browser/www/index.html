@@ -1,182 +1,159 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Fabric</title>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.3/fabric.min.js"></script>
-</head>
-<body>
-    <canvas id="canvas" width="800" height="600"></canvas>
-    <script>
-       (function() {
-  var $ = function(id){return document.getElementById(id)};
+	<head>
+		<body>
+			<style>
+				img{
+					width:400;
+					height:400;
+					display: block;
+    				margin-left: auto;
+    				margin-right: auto;
+    			}
+    @import url(http://fonts.googleapis.com/css?family=Squada+One);
+body {
+  background-image:url('startup.jpg');
+	background-size: cover;
+}
 
-  var canvas = this.__canvas = new fabric.Canvas('canvas', {
-    isDrawingMode: true
-  });
+a {
+  display: block;
+  width: 220px;
+  height: 70px;
+  z-index: 1;
+}
+a:after {
+  content: '';
+  background: linear-gradient(120deg, #6559ae, #ff7159, #6559ae);
+  background-size: 400% 400%;
+  -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
+  -moz-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
+  -webkit-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
+  animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
+}
+a > span {
+  display: block;
+  background: linear-gradient(120deg, #6559ae, #ff7159, #6559ae);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-animation: gradient 3s ease-in-out infinite;
+  -webkit-animation: gradient 3s ease-in-out infinite;
+  animation: gradient 3s ease-in-out infinite;
+}
 
-  fabric.Object.prototype.transparentCorners = false;
+/* helpers */
+.absolute-centering, body:after, a, a:after {
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
 
- // var drawingModeEl = $('drawing-mode'),
- //     drawingOptionsEl = $('drawing-mode-options'),
- //     drawingColorEl = $('drawing-color'),
- //     drawingShadowColorEl = $('drawing-shadow-color'),
- //     drawingLineWidthEl = $('drawing-line-width'),
-      // drawingShadowWidth = $('drawing-shadow-width'),
-      // drawingShadowOffset = $('drawing-shadow-offset'),
-      // clearEl = $('clear-canvas');
+.text-formatting, a {
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 70px;
+  font-family: 'Squada One', cursive;
+  font-size: 28px;
+}
 
-  // clearEl.onclick = function() { canvas.clear() };
+/* motion */
+@-moz-keyframes gradient {
+  0% {
+    background-position: 14% 0%;
+  }
+  50% {
+    background-position: 87% 100%;
+  }
+  100% {
+    background-position: 14% 0%;
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 14% 0%;
+  }
+  50% {
+    background-position: 87% 100%;
+  }
+  100% {
+    background-position: 14% 0%;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 14% 0%;
+  }
+  50% {
+    background-position: 87% 100%;
+  }
+  100% {
+    background-position: 14% 0%;
+  }
+}
+@-moz-keyframes border {
+  0% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
+  }
+}
+@-webkit-keyframes border {
+  0% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
+  }
+}
+@keyframes border {
+  0% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
+  }
+}
 
-  // drawingModeEl.onclick = function() {
-  //   canvas.isDrawingMode = !canvas.isDrawingMode;
-  //   if (canvas.isDrawingMode) {
-  //     drawingModeEl.innerHTML = 'Cancel drawing mode';
-  //     drawingOptionsEl.style.display = '';
-  //   }
-  //   else {
-  //     drawingModeEl.innerHTML = 'Enter drawing mode';
-  //     drawingOptionsEl.style.display = 'none';
-  //   }
-  // };
 
-  // if (fabric.PatternBrush) {
-  //   var vLinePatternBrush = new fabric.PatternBrush(canvas);
-  //   vLinePatternBrush.getPatternSrc = function() {
+		
+			</style>
+			<img src="Artboard.png" />
 
-  //     var patternCanvas = fabric.document.createElement('canvas');
-  //     patternCanvas.width = patternCanvas.height = 10;
-  //     var ctx = patternCanvas.getContext('2d');
+			<a href="wordgenerator.html" target="_blank"><span>Start Now!</span></a>
 
-  //     ctx.strokeStyle = this.color;
-  //     ctx.lineWidth = 5;
-  //     ctx.beginPath();
-  //     ctx.moveTo(0, 5);
-  //     ctx.lineTo(10, 5);
-  //     ctx.closePath();
-  //     ctx.stroke();
-
-  //     return patternCanvas;
-  //   };
-
-  //   var hLinePatternBrush = new fabric.PatternBrush(canvas);
-  //   hLinePatternBrush.getPatternSrc = function() {
-
-  //     var patternCanvas = fabric.document.createElement('canvas');
-  //     patternCanvas.width = patternCanvas.height = 10;
-  //     var ctx = patternCanvas.getContext('2d');
-
-  //     ctx.strokeStyle = this.color;
-  //     ctx.lineWidth = 5;
-  //     ctx.beginPath();
-  //     ctx.moveTo(5, 0);
-  //     ctx.lineTo(5, 10);
-  //     ctx.closePath();
-  //     ctx.stroke();
-
-  //     return patternCanvas;
-  //   };
-
-  //   var squarePatternBrush = new fabric.PatternBrush(canvas);
-  //   squarePatternBrush.getPatternSrc = function() {
-
-  //     var squareWidth = 10, squareDistance = 2;
-
-  //     var patternCanvas = fabric.document.createElement('canvas');
-  //     patternCanvas.width = patternCanvas.height = squareWidth + squareDistance;
-  //     var ctx = patternCanvas.getContext('2d');
-
-  //     ctx.fillStyle = this.color;
-  //     ctx.fillRect(0, 0, squareWidth, squareWidth);
-
-  //     return patternCanvas;
-  //   };
-
-  //   var diamondPatternBrush = new fabric.PatternBrush(canvas);
-  //   diamondPatternBrush.getPatternSrc = function() {
-
-  //     var squareWidth = 10, squareDistance = 5;
-  //     var patternCanvas = fabric.document.createElement('canvas');
-  //     var rect = new fabric.Rect({
-  //       width: squareWidth,
-  //       height: squareWidth,
-  //       angle: 45,
-  //       fill: this.color
-  //     });
-
-  //     var canvasWidth = rect.getBoundingRectWidth();
-
-  //     patternCanvas.width = patternCanvas.height = canvasWidth + squareDistance;
-  //     rect.set({ left: canvasWidth / 2, top: canvasWidth / 2 });
-
-  //     var ctx = patternCanvas.getContext('2d');
-  //     rect.render(ctx);
-
-  //     return patternCanvas;
-  //   };
-
-  //   var img = new Image();
-  //   img.src = '../assets/honey_im_subtle.png';
-
-  //   var texturePatternBrush = new fabric.PatternBrush(canvas);
-  //   texturePatternBrush.source = img;
-  // }
-
-  // $('drawing-mode-selector').onchange = function() {
-
-  //   if (this.value === 'hline') {
-  //     canvas.freeDrawingBrush = vLinePatternBrush;
-  //   }
-  //   else if (this.value === 'vline') {
-  //     canvas.freeDrawingBrush = hLinePatternBrush;
-  //   }
-  //   else if (this.value === 'square') {
-  //     canvas.freeDrawingBrush = squarePatternBrush;
-  //   }
-  //   else if (this.value === 'diamond') {
-  //     canvas.freeDrawingBrush = diamondPatternBrush;
-  //   }
-  //   else if (this.value === 'texture') {
-  //     canvas.freeDrawingBrush = texturePatternBrush;
-  //   }
-  //   else {
-  //     canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  //   }
-    canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
-    
-    if (canvas.freeDrawingBrush) {
-      canvas.freeDrawingBrush.color = "#005E7A";
-      canvas.freeDrawingBrush.width = 15;
-      canvas.freeDrawingBrush.shadowBlur = 0;
-    }
-  // };
-
-  // drawingColorEl.onchange = function() {
-  //   canvas.freeDrawingBrush.color = this.value;
-  // };
-  // drawingShadowColorEl.onchange = function() {
-  //   canvas.freeDrawingBrush.shadowColor = this.value;
-  // };
-  // drawingLineWidthEl.onchange = function() {
-  //   canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
-  //   this.previousSibling.innerHTML = this.value;
-  // };
-  // drawingShadowWidth.onchange = function() {
-  //   canvas.freeDrawingBrush.shadowBlur = parseInt(this.value, 10) || 0;
-  //   this.previousSibling.innerHTML = this.value;
-  // };
-  // drawingShadowOffset.onchange = function() {
-  //   canvas.freeDrawingBrush.shadowOffsetX =
-  //   canvas.freeDrawingBrush.shadowOffsetY = parseInt(this.value, 10) || 0;
-  //   this.previousSibling.innerHTML = this.value;
-  // };
-
-//   if (canvas.freeDrawingBrush) {
-//     canvas.freeDrawingBrush.color = drawingColorEl.value;
-//     canvas.freeDrawingBrush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
-//     canvas.freeDrawingBrush.shadowBlur = 0;
-//   }
-   })();
-    </script>   
-</body>
+		</body>
+	</head>
 </html>
