@@ -2,12 +2,13 @@
 	<head>
 		<body>
 			<style>
-				img{
-					width:400;
-					height:400;
-					display: block;
-    				margin-left: auto;
-    				margin-right: auto;
+	
+		img{
+			width:300;
+			height:300;
+			display: block;
+    		margin-left: auto;
+    		margin-right: auto;
     			}
     @import url(http://fonts.googleapis.com/css?family=Squada+One);
 body {
@@ -15,144 +16,76 @@ body {
 	background-size: cover;
 }
 
-a {
-  display: block;
-  width: 220px;
-  height: 70px;
-  z-index: 1;
-}
-a:after {
-  content: '';
-  background: linear-gradient(120deg, #6559ae, #ff7159, #6559ae);
-  background-size: 400% 400%;
-  -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
-  -moz-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
-  -webkit-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
-  animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
-}
-a > span {
-  display: block;
-  background: linear-gradient(120deg, #6559ae, #ff7159, #6559ae);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-animation: gradient 3s ease-in-out infinite;
-  -webkit-animation: gradient 3s ease-in-out infinite;
-  animation: gradient 3s ease-in-out infinite;
-}
-
-/* helpers */
-.absolute-centering, body:after, a, a:after {
-  position: absolute;
-  top: 240px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body {
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+    background-image:url('startup.jpg');
+	background-size: cover;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  font-family: Montserrat;
 }
 
-.text-formatting, a {
-  text-transform: uppercase;
-  text-decoration: none;
+h3 {
+  margin-top: -20px;
+  color:white;
+  font-size:40px;
+}
+
+.button {
+  box-sizing: border-box;
+  height: 50px;
+  width: 200px;
+  display: table;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
+  -webkit-transition: background .5s;
+  transition: background .5s;
+  cursor: pointer;
+}
+.button span {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  color: #2D3142;
+  box-shadow: 0 0 0 3px #2D3142 inset;
+  background: transparent;
+}
+.button .away {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
-  letter-spacing: 2px;
-  line-height: 70px;
-  font-family: 'Squada One', cursive;
-  font-size: 28px;
+}
+.button .over {
+  display: none;
 }
 
-/* motion */
-@-moz-keyframes gradient {
-  0% {
-    background-position: 14% 0%;
-  }
-  50% {
-    background-position: 87% 100%;
-  }
-  100% {
-    background-position: 14% 0%;
-  }
-}
-@-webkit-keyframes gradient {
-  0% {
-    background-position: 14% 0%;
-  }
-  50% {
-    background-position: 87% 100%;
-  }
-  100% {
-    background-position: 14% 0%;
-  }
-}
-@keyframes gradient {
-  0% {
-    background-position: 14% 0%;
-  }
-  50% {
-    background-position: 87% 100%;
-  }
-  100% {
-    background-position: 14% 0%;
-  }
-}
-@-moz-keyframes border {
-  0% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  25% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  50% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
-  }
-  75% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
-  }
-  100% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
-  }
-}
-@-webkit-keyframes border {
-  0% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  25% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  50% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
-  }
-  75% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
-  }
-  100% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
-  }
-}
-@keyframes border {
-  0% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  25% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 216px 66px, 216px 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
-  50% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 216px 4px, 100% 0%, 0% 0%);
-  }
-  75% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0%, 0% 0%);
-  }
-  100% {
-    -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0% 100%);
-  }
-}
-
-
-		
-			</style>
+</style>
+			
 			<img src="Artboard.png" />
 
-			<a href="wordgenerator.html" target="_blank"><span>Start Now!</span></a>
+			
+			<h3>Tyles</h3>
+<a class="button" href="wordgenerator.html" >
+  <span class="away">Get Started</span>
+</a>
 
 		</body>
 	</head>
