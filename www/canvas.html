@@ -50,8 +50,8 @@
   <canvas id="canvas" width="350" height="475"></canvas>
   
   <ul>
-    <button id="clear" class="btn btn-info">
-      <img src="img/icon_clear.png" style="width: 12px; height:25px;">
+    <button id="clear-canvas" class="btn btn-info">
+      <img src="img/icon_delete.png" style="width: 25px; height:25px;">
     </button>
     <button id="home" class="btn btn-info" stlye="margin:0">
       <a href="index.html">
@@ -73,8 +73,9 @@
   var $ = function(id){return document.getElementById(id)};
   var canvas = this.__canvas = new fabric.Canvas('canvas', {
     isDrawingMode: true
-
   });
+
+  var json = "";
 
   fabric.Object.prototype.transparentCorners = false;
 
@@ -88,6 +89,30 @@
       clearEl = $('clear-canvas');
 
   clearEl.onclick = function() { canvas.clear() };
+
+  undoEl = $('undo-canvas');
+  redoEl = $('redo-canvas');
+
+  undoEl.onclick = function() { 
+      // save json
+      json = JSON.stringify(canvas);
+
+      // clear canvas
+      canvas.clear();
+  }
+
+  redoEl.onclick = function() {
+
+      // and load everything from the same json
+      canvas.loadFromJSON(json, function() {
+
+        // making sure to render canvas at the end
+        canvas.renderAll();
+
+        // and checking if object's "name" is preserved
+        console.log(canvas.item(0).name);
+      });
+  }
 
   // drawingModeEl.onclick = function() {
   //   canvas.isDrawingMode = !canvas.isDrawingMode;

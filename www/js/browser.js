@@ -15,9 +15,9 @@ var loadImages = function() {
 	var results = [];
 	var filesystem = require("fs");
 
-	filesystem.readdirSync(dir).forEach(function(file)) {
+	filesystem.readdirSync(dir).forEach(function(file) {
 		results.push(file);
-	}
+	});
 
 	return results;
 };
@@ -29,15 +29,9 @@ var loadBrowsingList = function() {
 
 	$('body').append(container);
 
-	var html = "";
+	var html = '';
 	for (var i = 1; i <= imagePaths.length; i++) {
-		html += = '<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src=" ' + imagePaths[i] + '">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right"><a href="canvas.html">mode_edit</a></i></span>
-    </div>';
+		html += '<div class="card"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src=" ' + imagePaths[i] + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right"><a href="canvas.html">mode_edit</a></i></span></div>';
 	}
 
 	$('#wrapper').append(html);
