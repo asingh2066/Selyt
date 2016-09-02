@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 </head>
 
 </head>
@@ -236,6 +237,54 @@
       canvas.freeDrawingBrush.shadowBlur = 0;
     }
 
+    var imageObj = new Image();
+
+    console.log(window.location.search);
+    var search = window.location.search;
+    var src = search.split('=')[1];
+    console.log(src);
+    imageObj.src = src;
+    imageObj.onload = function() {
+      console.log("onload now");
+      var image = new fabric.Image(imageObj);
+
+      var heightFactor = canvas.height / image.height;
+      var widthFactor = canvas.width / image.width;
+      var scaleFactor;
+      
+      if (heightFactor < widthFactor) {
+        scaleFactor = heightFactor;
+      } else if (widthFactor < heightFactor) {
+        scaleFactor = widthFactor;
+      } else {
+        scaleFactor = 1;
+      }
+
+      image.set({
+            angle: 0,
+            padding: 10,
+            cornersize:10,
+            scaleX: scaleFactor,
+            scaleY: scaleFactor,
+      });
+
+    // $.get(src, function( data ) {
+
+    // });
+    canvas.centerObject(image);
+    canvas.add(image);
+    canvas.renderAll();
+  
+      // var img = document.createElement('img');
+      // img.src = window.canvasImage;
+
+      // // create an instance of named image
+      // var namedImg = fabric.NamedImage(img, { name: 'foobar' });
+
+      // // add it to canvas
+      // canvas.add(namedImg);
+    }
+
   // };
 
   // drawingColorEl.onchange = function() {
@@ -267,6 +316,6 @@
    })();
 
     </script>   
-    <script type="text/javascript" src="js/UndoRedo.js"></script>
+    <!-- // <script type="text/javascript" src="js/UndoRedo.js"></script> -->
 </body>
 </html>
