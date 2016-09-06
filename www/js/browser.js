@@ -52,5 +52,5 @@ $('.editable').click(function() {
 	window.canvasImage = image;
 	document.cookie = "canvas_image=" + image + ";path=/";
 
-	window.location.href = "canvas2.html?canvas_image=" + image;
+	window.location.href = "canvas.html?canvas_image=" + image;
 });
