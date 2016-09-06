@@ -32,11 +32,13 @@ var loadBrowsingList = function() {
 	container.id = "wrapper";
 
 	$('body').append(container);
-
+	var imageNames=["Fat_turtle", "Happy_fish", "Harry_the_Horse", "Spaceman"];
+	var imageReadableNames=["Fat Turtle", "Happy fish", "Harry the horse", "Spaceman"];
 	var html = '';
-	for (var i = 1; i <= 3; i++) {
-		imageName = "img/browsing/tyle_" + i + ".jpg";
-		html += '<div class="card"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="' + imageName + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">Spaceman<i class="material-icons right"><a class="editable">mode_edit</a></i></span></div>';
+	for (var i = 0; i <= 3; i++) {
+		imageName = "img/browsing/" + imageNames[i] + ".jpg";
+
+		html += '<div class="card"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="' + imageName + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + imageReadableNames[i] + '<i class="material-icons right"><a class="editable">mode_edit</a></i></span></div>';
 	}
 
 	$('#wrapper').append(html);
@@ -50,5 +52,5 @@ $('.editable').click(function() {
 	window.canvasImage = image;
 	document.cookie = "canvas_image=" + image + ";path=/";
 
-	window.location.href = "canvas2.html?canvas_image=" + image;
+	window.location.href = "canvas.html?canvas_image=" + image;
 });

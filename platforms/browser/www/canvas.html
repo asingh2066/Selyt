@@ -27,7 +27,7 @@
     }
     
     #word{
-      font-size: 30px;
+      font-size: 24px;
     }
   </style>
 <!-- <FORM NAME="WordForm" ACTION="index.html">  
@@ -37,7 +37,6 @@
 <a href="search.html">Search</a>
 <a href="wordgenerator.html">Search</a> -->
 
-
 <ul>
     <button id="brush" class="btn btn-info"><img src="img/icon_brush.png" style="width: 12px; height:25px;"></button>
     <button id="color" class="btn btn-info"><img src="img/icon_pallette.png" style="width:12px;height:25px;"></button>
@@ -45,10 +44,19 @@
     <button id="undo-canvas" class="btn btn-info"><img src="img/icon_undo.png" style="width:12px; height:25px;"></button>
     <button id="redo-canvas" class="btn btn-info"><img src="img/icon_redo.png" style="width:12px; height:25px;"></button>
   </ul>
+  <div id="brush-colors-div" style="position:; top:40px; display:inline">
+  <ul id="brush-colors">
+    <button id="black-color" class="btn btn-info" style="background:#000;"></button>
+    <button id="red-color" class="btn btn-info" style="background:#F00;"></button>
+    <button id="blue-color" class="btn btn-info" style="background:#00F;"></button>
+    <button id="green-color" class="btn btn-info" style="background:#0F0;"></button>
+    <button id="yellow-color" class="btn btn-info" style="background:#FF0;"></button>
+  </ul>
+  </div>
 
   <p id="word">Tree</p>
 
-  <canvas id="canvas" width="350" height="410"></canvas>
+  <canvas id="canvas" width="350" height="380"></canvas>
   
   <ul>
     <button id="clear-canvas" class="btn btn-info">
@@ -113,6 +121,41 @@
         // and checking if object's "name" is preserved
         console.log(canvas.item(0).name);
       });
+  }
+
+  $('brush').onclick = function() {
+
+    var colorsEl = $('brush-colors-div');
+    console.log(colorsEl.style.display);
+    if (colorsEl.style.display = "inline") {
+      colorsEl.style.display = "none";
+    } else if (colorsEl.style.display = "none") {
+      colorsEl.style.display = "inline";
+    }
+  }
+
+  $('black-color').onclick = function() {
+    changeColor('#000');
+  }
+
+  $('red-color').onclick = function() {
+    changeColor('#F00');
+  }
+
+  $('blue-color').onclick = function() {
+    changeColor('#00F');
+  }
+
+  $('green-color').onclick = function() {
+    changeColor('#0F0');
+  }
+
+  $('yellow-color').onclick = function() {
+    changeColor('#FF0');
+  }
+
+  var changeColor = function(color) {
+    canvas.freeDrawingBrush.color = color;
   }
 
   // drawingModeEl.onclick = function() {
@@ -233,7 +276,7 @@
     
     if (canvas.freeDrawingBrush) {
       canvas.freeDrawingBrush.color = "#000";
-      canvas.freeDrawingBrush.width = 18;
+      canvas.freeDrawingBrush.width = 12;
       canvas.freeDrawingBrush.shadowBlur = 0;
     }
 
@@ -242,6 +285,13 @@
     console.log(window.location.search);
     var search = window.location.search;
     var src = search.split('=')[1];
+    var name = src.split('.')[0];
+    name = name.split('/')[2];
+    name = name.replace("_", " ");
+    name = name.replace("_", " ");
+
+    $('word').innerHTML = name;
+
     console.log(src);
     imageObj.src = src;
     imageObj.onload = function() {
